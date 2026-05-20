@@ -7,7 +7,7 @@ st.title("Phát hiện giao dịch bất thường")
 df = pd.read_csv('data/anomaly_results.csv')
 
 # Hiển thị dữ liệu
-st.subheader("Danh sách ")
+st.subheader("Danh sách giao dịch ")
 
 st.dataframe(df)
 
@@ -18,7 +18,7 @@ anomalies = df[df['anomaly'] == -1]
 if 'anomaly_score' in anomalies.columns:
     # Sắp xếp các giao dịch rủi ro cao nhất (điểm số âm nhất) lên trên cùng
     anomalies = anomalies.sort_values(by='anomaly_score', ascending=True)
-st.subheader("Giao dịch bất thường")
+st.subheader("Các giao dịch bất thường")
 
 st.dataframe(anomalies)
 
