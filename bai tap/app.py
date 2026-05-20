@@ -50,6 +50,7 @@ def prepare_input_row(date_text, amount, customer_id, transaction_type):
 @app.route("/", methods=["GET", "POST"])
 def index():
     data = load_financial_dataset()
+    summary = summarize_anomalies(data)
     result = None
     input_values = {
         "date": datetime.now().strftime("%Y-%m-%d"),
