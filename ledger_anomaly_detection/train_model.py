@@ -16,7 +16,18 @@ for column in df.columns:
 
 # Chọn dữ liệu số
 features = df.select_dtypes(include=['int64', 'float64'])
+# --- CODE BỔ SUNG TRÊN NHÁNH feature-improve-model ---
+from sklearn.preprocessing import StandardScaler
 
+# Khởi tạo bộ chuẩn hóa để đưa các biến số về cùng một thang đo
+scaler = StandardScaler()
+# Giặt sạch dữ liệu số
+features_scaled = scaler.fit_transform(features)
+
+# Thay vì dùng 'features' gốc, bạn sửa lại các hàm phía dưới thành:
+# model.fit(features_scaled)
+# predictions = model.predict(features_scaled)
+# df['anomaly_score'] = model.decision_function(features_scaled)
 # Tạo model
 model = IsolationForest(
     n_estimators=100,
