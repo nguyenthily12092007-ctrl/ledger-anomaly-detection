@@ -14,6 +14,10 @@ st.dataframe(df)
 # Lọc giao dịch bất thường
 anomalies = df[df['anomaly'] == -1]
 
+# Kiểm tra nếu trong file kết quả có cột điểm số bất thường (anomaly_score)
+if 'anomaly_score' in anomalies.columns:
+    # Sắp xếp các giao dịch rủi ro cao nhất (điểm số âm nhất) lên trên cùng
+    anomalies = anomalies.sort_values(by='anomaly_score', ascending=True)
 st.subheader("Giao dịch bất thường")
 
 st.dataframe(anomalies)
