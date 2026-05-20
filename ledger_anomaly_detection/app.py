@@ -7,7 +7,7 @@ st.title("Phát hiện giao dịch bất thường")
 df = pd.read_csv('data/anomaly_results.csv')
 
 # Hiển thị dữ liệu
-st.subheader("Danh sách giao dịch")
+st.subheader("Danh sách")
 
 st.dataframe(df)
 
